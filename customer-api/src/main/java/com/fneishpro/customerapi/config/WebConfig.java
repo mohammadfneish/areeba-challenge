@@ -16,6 +16,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
 	
+	/**
+	 * enable cros origin domain
+	 */
 	@Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")

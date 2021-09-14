@@ -37,16 +37,16 @@ public class ValidateMobileService {
 
 	/**
 	 * Read the URL
-	 * @param url
-	 * @return JSONObject
-	 * @throws IOException
-	 * @throws JSONException
+	 * @param url the URL to read
+	 * @return MobileInfo
 	 */
-	public static MobileInfo readJsonFromUrl(String url) throws IOException, JSONException {
-		InputStream is = new URL(url).openStream();
+	public static MobileInfo readJsonFromUrl(String url) {
 		MobileInfo mobileInfo = new MobileInfo();
+		InputStream is = null;
 		
 		try {
+			is = new URL(url).openStream();
+			
 			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 			String jsonText = readAll(rd);
 			JSONObject json = new JSONObject(jsonText);
@@ -55,8 +55,17 @@ public class ValidateMobileService {
 			mobileInfo.setCountryCode(json.getString("country_prefix"));
 			mobileInfo.setCountryName(json.getString("country_name"));
 			mobileInfo.setOperatorName(json.getString("carrier"));
+		} catch(JSONException e) {
+			log.error("", e);
+		} catch (IOException e) {
+			log.error("", e);
 		} finally {
-			is.close();
+			if( is != null )
+				try {
+					is.close();
+				} catch (IOException e) {
+					log.error("", e);
+				}
 		}
 		
 		return mobileInfo;

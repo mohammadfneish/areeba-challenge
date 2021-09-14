@@ -36,10 +36,6 @@ public class CustomerController {
 	@Autowired private CustomerService customerService;
 	@Autowired private ValidateMobileService validateMobileService;
 
-	public CustomerController(CustomerService customerService) {
-		this.customerService = customerService;
-	}
-
 	@GetMapping("/mobile/{number}")
 	public ResponseEntity<MobileInfo> getPhoneInfo (
 			@PathVariable String number) throws JSONException {

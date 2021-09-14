@@ -3,7 +3,6 @@
  */
 package com.fneishpro.mobile.validation.controller;
 
-import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,9 +25,14 @@ public class ValidateMobileController {
 
 	@Autowired private ValidateMobileService validateMobileService;
 	
+	/**
+	 * Get phone info
+	 * @param number the number of the mobile
+	 * @return ResponseEntity of the MobileInfo object
+	 */
 	@GetMapping("/{number}")
 	public ResponseEntity<MobileInfo> getPhoneInfo (
-			@PathVariable String number) throws JSONException {
+			@PathVariable String number) {
 		
 		MobileInfo mobileInfo = validateMobileService.getPhoneInfo(number);
 		

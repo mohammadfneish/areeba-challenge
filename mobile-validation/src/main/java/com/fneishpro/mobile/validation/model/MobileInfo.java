@@ -9,29 +9,33 @@ package com.fneishpro.mobile.validation.model;
  */
 public class MobileInfo {
 
+	/**
+	 * true if the phone is valid else false
+	 */
 	private boolean valid;
+	
+	/**
+	 * .the country code of the mobile number
+	 */
 	private String countryCode;
+	
+	/**
+	 * the country name of the mobile number
+	 */
 	private String countryName;
+	
+	/**
+	 * the operator name of the mobile number if available
+	 */
 	private String operatorName;
     
+	/**
+	 * Constructor
+	 */
     public MobileInfo() {
 		super();
 	}
     
-	/**
-	 * @param valid
-	 * @param countryCode
-	 * @param countryName
-	 * @param operatorName
-	 */
-	public MobileInfo(boolean valid, String countryCode, String countryName, String operatorName) {
-		this.valid = valid;
-		this.countryCode = countryCode;
-		this.countryName = countryName;
-		this.operatorName = operatorName;
-	}
-
-
 	/**
 	 * @return the valid
 	 */
